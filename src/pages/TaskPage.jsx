@@ -22,7 +22,7 @@ function TaskPage() {
 
         <Title>Detalhes da tarefa</Title>
 
-        <div className="bg-slate-200 p-4 rounded-md">
+        <div className="bg-slate-600 p-4 rounded-md">
           <h2 className="text-3xl font-bold text-slate-600">{title}</h2>
           <p className="text-white text-slate-600">{description}</p>
         </div>
