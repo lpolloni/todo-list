@@ -32,7 +32,7 @@ function Tasks({ tasks, onTaskClick, onDeleteTaskClick }) {
           </Button>
 
           <Button onClick={() => onDeleteTaskClick(task.id)}>
-            <TrashIcon />
+            <TrashIcon className="text-red-300" />
           </Button>
         </li>
       ))}

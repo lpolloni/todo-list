@@ -3,6 +3,7 @@ import AddTasks from "./components/AddTasks";
 import Tasks from "./components/Tasks";
 import Title from "./components/Title";
 import { v4 } from "uuid";
+import { Globe } from "lucide-react";
 
 function App() {
   const [tasks, setTasks] = useState(
@@ -11,12 +12,6 @@ function App() {
   const [language, setLanguage] = useState(
     localStorage.getItem("language") || "pt"
   ); // Default to Portuguese
-
-  const handleLanguageChange = (e) => {
-    const newLanguage = e.target.value;
-    setLanguage(newLanguage);
-    localStorage.setItem("language", newLanguage);
-  };
 
   const getTitle = () => {
     return language === "pt" ? "Gerenciador de tarefas" : "Task Manager";
@@ -69,19 +64,24 @@ function App() {
     setTasks([...tasks, newTask]);
   }
 
+  const toggleLanguage = () => {
+    const newLanguage = language === "pt" ? "en" : "pt";
+    setLanguage(newLanguage);
+    localStorage.setItem("language", newLanguage);
+  };
+
   return (
     <div className="w-screen h-screen bg-slate-500 flex justify-center p-6">
       <div className="w-[500px] space-y-4">
         <div className="flex items-center justify-between">
           <Title>{getTitle()}</Title>
-          <select
-            onChange={handleLanguageChange}
-            value={language}
-            className="ml-auto p-1 border rounded"
+          <button
+            onClick={toggleLanguage}
+            className="ml-auto p-2 flex items-center"
           >
-            <option value="pt">Português</option>
-            <option value="en">English</option>
-          </select>
+            <span className="text-white">{language.toUpperCase()}</span>
+            <Globe className="text-white ml-1" />
+          </button>
         </div>
         <AddTasks onAddTaskSubmit={onAddTaskSubmit} language={language} />
         <Tasks
