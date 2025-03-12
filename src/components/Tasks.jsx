@@ -1,7 +1,8 @@
 /* eslint-disable react/jsx-no-undef */
-import { ChevronRight, DeleteIcon, Trash, TrashIcon } from "lucide-react";
+import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import Button from "./Button";
+import { ChevronRight, TrashIcon } from "lucide-react";
 
 function Tasks({ tasks, onTaskClick, onDeleteTaskClick }) {
   const navigate = useNavigate();
@@ -38,5 +39,18 @@ function Tasks({ tasks, onTaskClick, onDeleteTaskClick }) {
     </ul>
   );
 }
+
+Tasks.propTypes = {
+  tasks: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      description: PropTypes.string,
+      isCompleted: PropTypes.bool.isRequired,
+    })
+  ).isRequired,
+  onTaskClick: PropTypes.func.isRequired,
+  onDeleteTaskClick: PropTypes.func.isRequired,
+};
 
 export default Tasks;

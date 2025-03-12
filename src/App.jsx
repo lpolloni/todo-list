@@ -8,6 +8,19 @@ function App() {
   const [tasks, setTasks] = useState(
     JSON.parse(localStorage.getItem("tasks")) || []
   );
+  const [language, setLanguage] = useState(
+    localStorage.getItem("language") || "pt"
+  ); // Default to Portuguese
+
+  const handleLanguageChange = (e) => {
+    const newLanguage = e.target.value;
+    setLanguage(newLanguage);
+    localStorage.setItem("language", newLanguage);
+  };
+
+  const getTitle = () => {
+    return language === "pt" ? "Gerenciador de tarefas" : "Task Manager";
+  };
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -59,12 +72,23 @@ function App() {
   return (
     <div className="w-screen h-screen bg-slate-500 flex justify-center p-6">
       <div className="w-[500px] space-y-4">
-        <Title>Gerenciador de tarefas</Title>
-        <AddTasks onAddTaskSubmit={onAddTaskSubmit} />
+        <div className="flex items-center justify-between">
+          <Title>{getTitle()}</Title>
+          <select
+            onChange={handleLanguageChange}
+            value={language}
+            className="ml-auto p-1 border rounded"
+          >
+            <option value="pt">Português</option>
+            <option value="en">English</option>
+          </select>
+        </div>
+        <AddTasks onAddTaskSubmit={onAddTaskSubmit} language={language} />
         <Tasks
           tasks={tasks}
           onTaskClick={onTaskClick}
           onDeleteTaskClick={onDeleteTaskClick}
+          language={language}
         />
       </div>
     </div>
