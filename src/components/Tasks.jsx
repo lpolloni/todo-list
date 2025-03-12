@@ -17,12 +17,12 @@ function Tasks({ tasks, onTaskClick, onDeleteTaskClick }) {
   return (
     <ul className="space-y-4 p-6 bg-slate-100 rounded-md shadow">
       {tasks.map((task) => (
-        <li key={task.id} className="flex gap-2">
+        <li key={task.id} className="flex items-center gap-2">
           <input
             type="checkbox"
             checked={task.isCompleted}
             onChange={() => onTaskClick(task.id)}
-            className="mr-2"
+            className="mr-1 w-8 h-8 text-slate-500 bg-slate-200 border-slate-300 rounded focus:ring-slate-400"
           />
           <button
             onClick={() => onTaskClick(task.id)}
