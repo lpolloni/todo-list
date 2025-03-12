@@ -18,6 +18,12 @@ function Tasks({ tasks, onTaskClick, onDeleteTaskClick }) {
     <ul className="space-y-4 p-6 bg-slate-100 rounded-md shadow">
       {tasks.map((task) => (
         <li key={task.id} className="flex gap-2">
+          <input
+            type="checkbox"
+            checked={task.isCompleted}
+            onChange={() => onTaskClick(task.id)}
+            className="mr-2"
+          />
           <button
             onClick={() => onTaskClick(task.id)}
             className={`bg-slate-400 text-left w-full text-white p-2 rounded-md ${
