@@ -15,7 +15,7 @@ function Tasks({ tasks, onTaskClick, onDeleteTaskClick }) {
   }
 
   return (
-    <ul className="space-y-4 p-6 bg-slate-100 rounded-md shadow">
+    <ul className="space-y-4 p-6 bg-gradient-to-r from-slate-100 to-slate-200 rounded-md shadow">
       {tasks.map((task) => (
         <li key={task.id} className="flex items-center gap-2">
           <input
