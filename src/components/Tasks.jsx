@@ -22,7 +22,7 @@ function Tasks({ tasks, onTaskClick, onDeleteTaskClick }) {
             type="checkbox"
             checked={task.isCompleted}
             onChange={() => onTaskClick(task.id)}
-            className="mr-1 w-8 h-8 text-slate-500 bg-slate-200 border-slate-300 rounded focus:ring-slate-400"
+            className="mr-1 w-6 h-6 text-slate-500 bg-slate-200 border-slate-300 rounded focus:ring-slate-400"
           />
           <button
             onClick={() => onTaskClick(task.id)}
