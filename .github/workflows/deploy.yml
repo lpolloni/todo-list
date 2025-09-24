@@ -30,4 +30,3 @@ jobs:
       run: |
         git remote add deploy ssh://deploy@lucaspolloni.com:/opt/todo/prod/app.git
         git push deploy prod:master
-
